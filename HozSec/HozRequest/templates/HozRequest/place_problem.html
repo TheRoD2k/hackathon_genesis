@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 {% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,24 +10,37 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/example.css' %}">
-
+    {%if not empty%}
     <div class="container">
         <form id="contact" action="" method="post">
+            {% csrf_token %}
             <h3>Отправить заявку на решение проблемы</h3>
             <fieldset>
-                <input placeholder="Фамилия и имя" type="text" tabindex="1" required autofocus>
+                <input placeholder="Проблема" type="text" name="theme" tabindex="1" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Проблема" type="text" tabindex="1" required>
+                <textarea placeholder="Описание проблемы" tabindex="5" name="problem_text" required></textarea>
             </fieldset>
             <fieldset>
-                <textarea placeholder="Описание проблемы" tabindex="5" required></textarea>
+                <p><input type="checkbox" name="anon"> Отправить жалобу анонимно</p>
             </fieldset>
             <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
             </fieldset>
+
         </form>
     </div>
+    {% endif %}
+    {% if empty %}
+        <div class = "container">
+        <h3>Для подачи жалобы необходима регистрация</h3>
+            <input type="submit" value="Регистрация"
+    onclick="window.location='http://127.0.0.1:8000/signup';" />
+            <input type="submit" value="Вход"
+    onclick="window.location='http://127.0.0.1:8000/signin';" />
+
+        </div>
+    {% endif %}
 </head>
 <body>
 
