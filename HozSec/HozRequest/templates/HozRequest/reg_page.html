@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/reg_page.css' %}">
+
+    <div class="container">
+        <form id="contact" action="" method="post">
+            <h3>Регистрация</h3>
+            <fieldset>
+                <input placeholder="Логин" type="text" tabindex="1" required autofocus>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Эл. почта" type="text" tabindex="1">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Пароль" type="password" tabindex="1">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Повторите пароль" type="password" tabindex="1">
+            </fieldset>
+
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Зарегистрироваться</button>
+            </fieldset>
+        </form>
+    </div>
+</head>
+<body>
+
+</body>
+</html>
