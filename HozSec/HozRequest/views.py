@@ -5,6 +5,7 @@ from . import models, forms
 from .models import *
 from . import db_functions
 def mainpage(request):
+
     return render(request, 'HozRequest/signin.html', {})
 def place_problem(request):
     #если не зареган - пиздуй на регистрацию
@@ -33,4 +34,5 @@ def place_problem(request):
     return render(request, 'HozRequest/place_problem.html', context)
 def signin(request):
     return render(request, 'HozRequest/signin.html', {})
+
 # Create your views here.
