@@ -3,7 +3,7 @@ from .models import User, Message, Request
 from django.db import models
 
 
-def login(email, password, ruleset):
+def login(email, password):
     if User.objects.filter(email__exact=email, password__exact=password) is not None:
         return 'Successful log in'
     elif User.objects.filter(email__exact=email) is not None:
