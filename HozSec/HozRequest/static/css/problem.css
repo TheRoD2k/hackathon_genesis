@@ -10,7 +10,7 @@
 .left {
     left: 0;
     width: 40%;
-    background-color: rgba(128, 255, 128, .5);
+    background: CadetBlue;
 }
 
 .right {
@@ -19,14 +19,33 @@
     background-color: rgba(255, 255, 128, .5);
 }
 
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+.imgdescription {
+    position: relative;
+    left: 170px;
+    top: 20px;
+    width: 300px;
 }
 
+.imgsettings {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 50%;
+}
+
+.description {
+    position: relative;
+    top: 400px;
+    left: 20px;
+
+}
+
+.status_problem {
+    position: relative;
+    top: 500px;
+    left: 20px;
+}
 .chat
 {
     border: 2px solid #dedede;
@@ -55,15 +74,16 @@
     color: #aaa;
     transform: scale(0.5)
 }
-}
+
 
 .NewText
 {
-    height: 10%;
-    width: 100%;
+    top: 870px;
+    height: 7%;
+    width: 40%;
+    right: 180px;
     position: fixed;
     z-index: 1;
-    top: 850px;
-    background: white;
+    background: DarkSlateGrey;
     text-align: center;
 }

@@ -6,24 +6,37 @@
 <title>Title</title>
 <link rel="stylesheet" href="{% static 'css/problem.css' %}">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 
 <body>
 <div class="split left">
     <div class="w3-container">
-        <div class="centered" style="width:50%">
-            <img src="https://a.wattpad.com/cover/108372882-352-k25057.jpg" alt="Tolchok" style="width:100%">
-            <div class="w3-container">
-                <h4><b>
-
-                </b></h4>
+        <div class="imgdescription" style="width:50%">
+            <img src="" alt="Tolchok" class="imgsettings">
             </div>
         </div>
+    <div class="description">
+        <h1>
+            Описание:
+        </h1>
+        <p>
+            text
+        </p>
     </div>
+    <dev class="status_problem">
+        <h2>
+            Статус:
+        </h2>
+        <p>
+            text
+        </p>
+    </dev>
 </div>
 
 <div class="split right">
     <ul class="chat">
-        <img src="https://lamcdn.net/lookatme.ru/post-cover/YTs4AdwURuPWdki4OJW8jQ-default.jpg" alt="Avatar" style="width:100%;">
+        <img src="https://lamcdn.net/lookatme.ru/post-cover/YTs4AdwURuPWdki4OJW8jQ-default.jpg" alt="Avatar"
+             style="width:100%;">
         <div class="info">
             <div>
                 Имя
@@ -41,16 +54,11 @@
     </ul>
 
     <div class="NewText">
-        <div class="panel-footer">
-            <div class="input-group">
-                <input id="btn-input" type="text" class="form-control input-sm"
-                       placeholder="Type your message here..."/>
-                <span class="input-group-btn">
-                            <button class="btn btn-warning btn-sm" id="btn-chat">
-                                Send</button>
-                        </span>
-            </div>
-        </div>
+        <input type="text" placeholder="Type your message here..."
+               style="width: 80%; float: left; background: white; height:100%">
+        <button style="width: 20%; float: right; background: CadetBlue; height:100%">
+            SEND
+        </button>
     </div>
 </div>
 
