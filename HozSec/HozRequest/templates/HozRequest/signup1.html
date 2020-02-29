@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="http://127.0.0.1:8000/signup/" method="post">
+    {% csrf_token %}
+  <div>
+    <label for="first">data1</label>
+    <input name="first" id="first" value="">
+  </div>
+  <div>
+    <label for="second">data2</label>
+    <input name="second" id="second" value="">
+  </div>
+  <div>
+    <button>Send</button>
+      {% csrf_token %}
+      {% if filled %}
+        Yep! Last data: {{first}}
+      {% endif %}
+  </div>
+</form>
+</body>
+</html>

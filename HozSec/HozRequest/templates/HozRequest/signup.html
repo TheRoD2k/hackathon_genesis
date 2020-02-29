@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{% if form.errors %}
-  <p>Your username and password didn't match. Please try again.</p>
-{% endif %}
- <form>
-  <label for="fname">Email:</label><br>
-  <input type="text" id="fname" name="fname"><br>
-  <label for="lname">Password:</label><br>
-  <input type="text" id="lname" name="lname">
-</form>
-<input type="button" onclick="location.href('127.0.0.1:8000/signup');" value="Redirect">
-</body>
-</html>
+{% extends 'HozRequest/base.html' %}
+
+{% block content %}
+    <h1>New post</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+{% endblock %}
