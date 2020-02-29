@@ -46,7 +46,8 @@ def signup(request):
         else:
             temp = User(password=request.POST['pass_1'],
                         email=request.POST['mail'],
-                        ruleset='user')
+                        ruleset='user',
+                        name=request.POST['login'])
             request.session['login']=request.POST['mail']
             temp.save()
             return redirect("/public_problems/")
@@ -67,12 +68,18 @@ def signin(request):
     return render(request, "HozRequest/login_page.html", context)
 def public_problems(request):
     context = {}
+    context['requests'] = db_functions.get_public_problems()
+    if context['requests'].exists():
+        context['valid'] = True
+
     return render(request,"HozRequest/main_page.html", context)
+
 def problem_info(request,problem_id):
     context = {}
     context['Failed'] = True
     temp_problem = db_functions.get_problem_by_id(problem_id)
     if temp_problem.exists():
         context['Failed'] = False
+
 
     return render(request,"HozRequest/problem.html",context)
