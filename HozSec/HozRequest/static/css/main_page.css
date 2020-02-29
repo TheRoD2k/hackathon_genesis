@@ -1,0 +1,153 @@
+body {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	font: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #000000;
+	background: #EEEEEE;
+}
+*
+{
+  margin: 0 auto 0 auto;
+ text-align:left;}
+
+#container
+{
+  display: block;
+  height:auto;
+  position: relative;
+  width: 80%;
+  padding-left:17px;
+  padding-right:17px;
+  overflow:hidden;
+}
+
+#links
+{
+display:block;
+float:right;
+margin-top:25px;
+margin-right:10px;
+}
+
+#links a, #links a:visited
+{
+font-size:16px;
+font-weight:bold;
+margin-left:4px;
+margin-right:4px;
+color: #1652B4;
+text-decoration:none;
+}
+
+#links a:hover
+{
+border-bottom:dotted 1px #1652B4;
+}
+
+#header
+{
+height:60px;
+
+}
+
+#header h1
+{
+margin-top:15px;
+margin-left:10px;
+font-size:33px;
+color:#0A2645;
+float:left;
+}
+
+.off
+{
+color:#1652B4;
+}
+
+.picture
+{
+	padding-bottom:8px;
+    width: 100px;
+	margin-top:22px;
+}
+
+.username {
+    font-size: 22px;
+    color: #123F83;
+    padding: 20px;
+}
+
+.row h3 {
+    padding: 20px;
+}
+
+.row {
+    border-color: #123F83;
+    border-style: solid;
+}
+
+.row_contents {
+    display: flex;
+    justify-content: flex-start;
+    width: 80%;
+    float: left;
+}
+
+.problem_pic {
+    float: left;
+    width: 500px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.problem_contents {
+    font-size: 18px;
+    float: left;
+    width: 600px;
+    margin-right: 20px;
+}
+
+.problem_text {
+    float: left;
+    color: #123F83;
+    font-size: 18px;
+}
+
+.statusbar {
+    font-size: 18px;
+    color: #123F83;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.status {
+    margin-right: 20px;
+}
+
+.statusvalue {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.contenttext h2
+{
+color:#123F83;
+font-size:24px;
+margin-bottom:10px;
+
+}
+
+.contenttext
+{
+	padding-left:10px;
+	padding-right:10px;
+}
+
+
+html, body {
+text-align: center;
+}
+
+p {text-align: left;}
