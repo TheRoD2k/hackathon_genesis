@@ -12,12 +12,19 @@
 
     <div class="container">
         <form id="contact" action="" method="post">
+            {% csrf_token %}
             <h3>Авторизация</h3>
+            {% if wmail %}
+                <h3>Wrong email!</h3>
+            {% endif %}
             <fieldset>
-                <input placeholder="Эл. почта" type="text" tabindex="1" required autofocus>
+                <input placeholder="Эл. почта" name="mail" type="text" tabindex="1" required autofocus>
             </fieldset>
+            {% if wpass %}
+                <h3>Wrong password!</h3>
+            {% endif %}
             <fieldset>
-                <input placeholder="Пароль" type="password" tabindex="1">
+                <input placeholder="Пароль" name="pass" type="password" tabindex="1" required >
             </fieldset>
             <fieldset>
                 <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Войти</button>
