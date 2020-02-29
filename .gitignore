@@ -1,12 +1,12 @@
 # Default ignored files
-/workspace.xml
+HozSec/workspace.xml
 # Datasource local storage ignored files
-/dataSources.local.xml
+HozSec/dataSources.local.xml
 # .idea
-/.idea
+HozSec/.idea
 # pycaches
-/HozSec/HozRequest/__pycache__
-/HozSec/HozSec/__pycache__
-/HozSec/db.sqlite
+HozSec/HozRequest/__pycache__
+HozSec/HozSec/__pycache__
+HozSec/db.sqlite3
 # venv
 /venv
