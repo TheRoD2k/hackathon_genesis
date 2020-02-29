@@ -1,9 +1,4 @@
-body {
-    background: #F1F3FA;
-}
-
-div.paleBlueRows {
-  font-family: "Times New Roman", Times, serif;
+table.paleBlueRows {
   border: 1px solid #FFFFFF;
   background-color: #EEEEEE;
   width: 100%;
@@ -11,39 +6,31 @@ div.paleBlueRows {
   text-align: center;
   border-collapse: collapse;
 }
-.divTable.paleBlueRows .divTableCell, .divTable.paleBlueRows .divTableHead {
+table.paleBlueRows td, table.paleBlueRows th {
   border: 1px solid #FFFFFF;
   padding: 3px 2px;
 }
-.divTable.paleBlueRows .divTableBody .divTableCell {
-  font-size: 13px;
+table.paleBlueRows tbody td {
+  font-size: 16px;
 }
-.divTable.paleBlueRows .divTableRow:nth-child(even) {
+table.paleBlueRows tr:nth-child(even) {
   background: #D0E4F5;
 }
-.divTable.paleBlueRows .divTableHeading {
+table.paleBlueRows thead {
   background: #0B6FA4;
   border-bottom: 5px solid #FFFFFF;
 }
-.divTable.paleBlueRows .divTableHeading .divTableHead {
-  font-size: 18px;
+table.paleBlueRows thead th {
+  font-size: 20px;
   font-weight: bold;
   color: #FFFFFF;
   text-align: center;
   border-left: 2px solid #FFFFFF;
 }
-.divTable.paleBlueRows .divTableHeading .divTableHead:first-child {
+table.paleBlueRows thead th:first-child {
   border-left: none;
 }
 
-.paleBlueRows .tableFootStyle {
+table.paleBlueRows tfoot td {
   font-size: 14px;
 }
-/* DivTable.com */
-.divTable{ display: table; }
-.divTableRow { display: table-row; }
-.divTableHeading { display: table-header-group;}
-.divTableCell, .divTableHead { display: table-cell;}
-.divTableHeading { display: table-header-group;}
-.divTableFoot { display: table-footer-group;}
-.divTableBody { display: table-row-group;}
