@@ -1,8 +1,32 @@
 <!DOCTYPE html>
+
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/example.css' %}">
+
+    <div class="container">
+        <form id="contact" action="" method="post">
+            <h3>Отправить заявку на решение проблемы</h3>
+            <fieldset>
+                <input placeholder="Фамилия и имя" type="text" tabindex="1" required autofocus>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Проблема" type="text" tabindex="1" required>
+            </fieldset>
+            <fieldset>
+                <textarea placeholder="Описание проблемы" tabindex="5" required></textarea>
+            </fieldset>
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+            </fieldset>
+        </form>
+    </div>
 </head>
 <body>
 
