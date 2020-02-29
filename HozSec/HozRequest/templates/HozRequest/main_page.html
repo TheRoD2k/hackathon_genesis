@@ -3,11 +3,10 @@
 
 <html lang="ru">
 <link rel="stylesheet" href="{% static 'css/main_page.css' %}">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HozSec</title>
 </head>
 
@@ -22,30 +21,35 @@
         </div>
     </div>
     <div class="content">
-        <div class="column">
-            <div class="row">
+        <div class="record">
+            <div class="info">
                 <div class="username">
                     Имя пользователя
                 </div>
-                <span class="row_contents">
+                <div class="status_bar">
+                    <div class="status">
+                        Status:
+                    </div>
+                    <div class="value">
+                        Not solved
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column1">
                     <div class="problem_pic">
                         <img class="picture" src="#">
                     </div>
-                    <div class="problem_contents">
-                        Описание проблемы
-                        <div class="statusbar">
-                            <div class="status">
-                                Статус проблемы:
-                            </div>
-                            <div class="statusvalue">
-                                Не решена
-                            </div>
-                        </div>
-
+                </div>
+                <div class="column2">
+                    <div class="problem_text">
+                        Text
                     </div>
-                </span>
+
+                </div>
             </div>
         </div>
+
 
     </div>
 
