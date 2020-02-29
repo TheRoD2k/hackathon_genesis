@@ -52,7 +52,7 @@ class Message(models.Model):
     message_text = models.TextField(max_length=500)
 
 
-def CreateUser(UserWr):
+def create_user(UserWr):
     temp_user = User(email=UserWr.email,
                      password=UserWr.password,
                      ruleset=UserWr.ruleset)
@@ -60,7 +60,7 @@ def CreateUser(UserWr):
     return temp_user
 
 
-def CreateRequest(RequestWr):
+def create_request(RequestWr):
     temp_request = Request(theme=RequestWr.theme,
                            problem_text=RequestWr.problem_text,
                            user=RequestWr.User,
@@ -69,7 +69,7 @@ def CreateRequest(RequestWr):
     temp_request.save()
 
 
-def CreateMessage(MessageWr):
+def create_message(MessageWr):
     temp_message = Message(request=MessageWr.Request,
                            user=MessageWr.User,
                            message_text=MessageWr.message_text)
@@ -77,12 +77,12 @@ def CreateMessage(MessageWr):
 
 
 # temp_user_wrapper = UserWrapper(email_field="zhopa@phystech.edu", password_field="querty", ruleset_field="admin")
-# temp_user = CreateUser(temp_user_wrapper)
+# temp_user = create_user(temp_user_wrapper)
 #
 # temp_request_wrapper = RequestWrapper(theme_field="Обосрали весь толчок...",
 #                                       problem_text_field="Даже стульчак в говне...",
 #                                       User_lnk=temp_user,
 #                                       private_field=False)
-# CreateRequest(temp_request_wrapper)
+# create_request(temp_request_wrapper)
 
 # Create your models here.
