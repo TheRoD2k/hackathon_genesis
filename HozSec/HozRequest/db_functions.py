@@ -1,6 +1,6 @@
 from . import models as db
 from .models import User, Message, Request
-from django.db import models
+# from django.db import models
 
 
 def login(email, password):
@@ -44,21 +44,29 @@ def get_public_problems():
     """
     return Request.objects.filter(private__exact=False).values()
 
-def get_problem_by_id(id):
-    return Request.objects.filter(pk__exact = id).values()
 
-def get_user_by_id(id):
-    return User.objects.filter(pk__exact = id).values()[0]
+def get_problem_by_id(problem_id):
+    return Request.objects.filter(pk__exact=problem_id).values()
+
+
+def get_user_by_id(user_id):
+    return User.objects.filter(pk__exact=user_id).values()[0]
+
+
 def add_problem(email, theme, problem, private_flag):
     """
     add problem as default
     """
-    db.create_request(db.RequestWrapper(
-        theme_field=theme,
-        problem_text_field=problem,
-        private_field=private_flag,
-        User_lnk=get_user(email)
-    ))
+    try:
+        rqst = Request(
+            theme=theme,
+            problem_text=problem,
+            private=private_flag,
+            user=User.objects.filter(email__exact=email)[0]
+        )
+        rqst.save()
+    except IndexError:
+        return 'No such user'
 
 
 def get_problems(user_email, problems_count=0):
@@ -68,21 +76,22 @@ def get_problems(user_email, problems_count=0):
     return Request.objects.filter(user__email__exact=user_email).values('id', 'theme')
 
 
-def get_problems_by_id(id_request):
+def get_problems_by_id(request_id):
     return Request.objects.filter(
-        user__message__request__exact=id_request
+        pk__exact=request_id
     ).values('problem_text')
 
 
-def get_messages(id_request):
+def get_messages(request_id):
     return Request.objects.filter(
-        user__message__request_id__exact=id_request
+        pk__exact=request_id
     ).values('message_text')
 
+
 def get_comments(problem_id):
-    tempous = get_problem_by_id(problem_id)
-    if not tempous.exists():
-        return tempous
+    tmp = get_problem_by_id(problem_id)
+    if not tmp.exists():
+        return tmp
     else:
-        tempous = tempous[0]
-        return Message.objects.filter(request__exact=tempous['id']).values()
+        tmp = tmp[0]
+        return Message.objects.filter(request__exact=tmp['id']).values()
