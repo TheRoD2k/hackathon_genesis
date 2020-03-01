@@ -14,9 +14,13 @@
 <div id="header" style=" right: auto; top: 0; background-color: #5b9bd1" >
     <h1>HozSec</h1>
     <div id="links">
-        <a href="#">Оставить заявку</a>
-        <a href="#">Личный кабинет</a>
-        <a href="#">Выйти</a>
+        <a href="http://127.0.0.1:8000/public_problems">Оставить заявку</a>
+        <a href="http://127.0.0.1:8000/userpage">Личный кабинет</a>
+        {% if Logged %}
+        <a href="http://127.0.0.1:8000/logout">Выйти</a>
+        {% else %}
+        <a href="http://127.0.0.1:8000/signin">Войти</a>
+        {% endif %}
     </div>
 </div>
 
