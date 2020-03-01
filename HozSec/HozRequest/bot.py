@@ -1,4 +1,4 @@
-import db_functions as dbf
+from . import db_functions as dbf
 import telebot
 
 

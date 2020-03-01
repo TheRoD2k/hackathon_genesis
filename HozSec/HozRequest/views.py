@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 import datetime
-from . import models, forms
 from .models import *
-from . import db_functions
+from HozRequest import db_functions
 
 
 def mainpage(request):
