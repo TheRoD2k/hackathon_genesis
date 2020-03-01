@@ -16,6 +16,14 @@
 
 
     {%if not empty%}
+    <div id="header">
+        <h1>HozSec</h1>
+        <div id="links">
+            <a href="#">Оставить заявку</a>
+            <a href="#">Личный кабинет</a>
+            <a href="#">Выйти</a>
+        </div>
+    </div>
     <div class="container">
         <form id="contact" action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
