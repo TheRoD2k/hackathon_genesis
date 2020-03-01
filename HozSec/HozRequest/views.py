@@ -27,8 +27,7 @@ def place_problem(request):
                        private= (request.POST["anon"] == "on"),
                        resolved=False)
         temp.save()
-        return redirect("/")#заглушка
-        return redirect("problem_gained/")
+        return redirect("/userpage")
     return render(request, 'HozRequest/place_problem.html', context)
 
 #регистрация
@@ -60,7 +59,7 @@ def signin(request):
         result = db_functions.login(request.POST["mail"],request.POST["pass"])
         if(result=='Successful log in'):
             request.session['login']=request.POST['mail']
-            return redirect('/mainpage')
+            return redirect('/public_problems')
         elif result=='Wrong password':
             context['wpass'] = True
         else:
@@ -78,8 +77,38 @@ def problem_info(request,problem_id):
     context = {}
     context['Failed'] = True
     temp_problem = db_functions.get_problem_by_id(problem_id)
+    context['Logged'] = db_functions.get_user(request.session.get('login',"123")).exists()
     if temp_problem.exists():
-        context['Failed'] = False
+        if request.method == 'POST':
+            tempouser = db_functions.get_user(request.session['login'])
+            if tempouser.exists():
+                temp_message = Message(request=Request.objects.get(id=problem_id),
+                                       user=User.objects.get(email=tempouser[0].email),
+                                       message_text=request.POST['message_text']
+                                       )
+                temp_message.save()
 
+        context['Failed'] = False
+        context['data'] = temp_problem[0]
+        context['messages'] = db_functions.get_comments(problem_id)
+        context['users'] = {}
+        tem_mas = []
+        for i in context['messages']:
+            tempouser = db_functions.get_user_by_id(i['user_id'])
+            tem_mas.append({'name': tempouser['name'],'role':tempouser['ruleset']})
+        context['zip'] = zip(context['messages'],tem_mas)
+        print(context['users'])
 
     return render(request,"HozRequest/problem.html",context)
+def userpage(request):
+    context = {}
+    Logged = db_functions.get_user(request.session.get('login',"123")).exists()
+    if not 'Logged':
+        redirect("/signup")
+    else:
+        tempouser = db_functions.get_user(request.session.get('login',"123"))[0]
+        context['problems'] = db_functions.get_problems_by_user(tempouser.id)
+        context['user'] = tempouser
+
+        pass
+    return render(request,"HozRequest/userpage.html",context)

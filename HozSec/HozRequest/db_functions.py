@@ -30,6 +30,8 @@ def get_public_problems():
 def get_problem_by_id(id):
     return Request.objects.filter(pk__exact = id).values()
 
+def get_user_by_id(id):
+    return User.objects.filter(pk__exact = id).values()[0]
 def add_problem(email, theme, problem, private_flag):
     db.create_request(db.RequestWrapper(
         theme_field=theme,
@@ -40,4 +42,9 @@ def add_problem(email, theme, problem, private_flag):
 
 
 def get_comments(problem_id):
-    pass
+    tempous = get_problem_by_id(problem_id)
+    if not tempous.exists():
+        return tempous
+    else:
+        tempous = tempous[0]
+        return Message.objects.filter(request__exact=tempous['id']).values()

@@ -20,7 +20,7 @@
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle">
                     <div class="profile-usertitle-name">
-                        Пользователь
+                        {{ user.name }}
                     </div>
                 </div>
                 <div class="profile-usermenu">
@@ -57,11 +57,14 @@
                         <th>Дата</th>
                         <th>Статус</th>
                     </tr>
+                    {% for i in problems %}
                     <tr>
-						<th></th>
-						<th></th>
-						<th></th>
+						<th>{{ i.theme }}</th>
+						<th>{{ i.date }}</th>
+						<th>{% if i.resolved %} Решена {% else %} Не решена {% endif %}</th>
                     </tr>
+                    {% endfor %}
+
 
                 </table>
             </div>
