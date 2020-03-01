@@ -1,7 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-
-
+from django.core.files.storage import FileSystemStorage
+#fs = FileSystemStorage(location='/photos')
 
 def user_ruleset_validator(ruleset):
     if ruleset != "admin" and ruleset != "user" and ruleset != "moderator":
@@ -22,6 +22,7 @@ class Request(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, default="user")
     private = models.BooleanField(default=True)
     resolved = models.BooleanField(default=False)
+    photo = models.ImageField()
 
 
 class Message(models.Model):
@@ -32,3 +33,9 @@ class Message(models.Model):
 
 
 # Create your models here.
+"""
+                            <select name="moderate" id="moderate">
+                                <option value="solved">Проблема решена</option>
+                                <option value="unsolved">Проблема не решена</option>
+                            </select>
+"""

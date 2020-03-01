@@ -11,4 +11,5 @@ urlpatterns = [
     path('signin/',views.signin,name='signin'),
     #path('problem_gained/',views.problem_gained,name='gained'),
     path('signup/',views.signup,name='signup'),
+    path('',views.place_problem,name='mainpage')
     ]

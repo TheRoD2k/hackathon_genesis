@@ -58,6 +58,7 @@ TEMPLATES = [
         'DIRS': [],
         'APP_DIRS': True,
         #'CRISPY_TEMPLATE_PACK' : 'bootstrap4',
+        #'MEDIA_ROOT': '/home/m1ndst0ne/PycharmProjects/HackaHey/hackathon_genesis/HozSec/HozRequest/static/media',
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

@@ -10,7 +10,6 @@ def place_problem(request):
     #если вернулся после отправки формы - лети на problem_gained
     context = {}
     context["empty"] = False
-    #request.session['login'] = "test@phystech.edu"
     mail = request.session.get('login',"")
     user = db_functions.get_user(mail)
     print(user.exists())
@@ -67,7 +66,15 @@ def signin(request):
     return render(request, "HozRequest/login_page.html", context)
 def public_problems(request):
     context = {}
+    if request.method == "POST":
+        req_id = int(request.POST['moderate'].split('+')[1])
+        solved = request.POST['moderate'].split('+')[0]=='solved'
+        Request.objects.filter(pk=req_id).update(resolved=solved)
+
     context['requests'] = db_functions.get_public_problems()
+    context['isadmin'] = False
+    if db_functions.get_user(request.session.get('login',"123")).exists():
+        context['isadmin'] = (db_functions.get_user(request.session.get('login', "123"))[0].ruleset != 'user')
     if context['requests'].exists():
         context['valid'] = True
 
@@ -103,12 +110,12 @@ def problem_info(request,problem_id):
 def userpage(request):
     context = {}
     Logged = db_functions.get_user(request.session.get('login',"123")).exists()
-    if not 'Logged':
+    if not Logged:
         redirect("/signup")
     else:
         tempouser = db_functions.get_user(request.session.get('login',"123"))[0]
         context['problems'] = db_functions.get_problems_by_user(tempouser.id)
         context['user'] = tempouser
 
-        pass
+
     return render(request,"HozRequest/userpage.html",context)

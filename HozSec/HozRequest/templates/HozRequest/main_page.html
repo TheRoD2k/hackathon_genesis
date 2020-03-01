@@ -33,11 +33,22 @@
                         Status:
                     </div>
                     <div class="value">
+                    {% if not isadmin %}
                         {% if i.resolved %}
                         Решено
                         {% else %}
                         Не решено
                         {% endif %}
+                    {% else %}
+                        <form id="change_status" method="post" action="">
+                            {% csrf_token %}
+                            <select name="moderate" id="moderate" >
+                                <option value="solved+{{ i.id }}" {% if i.resolved %} selected {% endif %}>Проблема решена</option>
+                                <option value="unsolved+{{ i.id }}"{% if not i.resolved %} selected {% endif %}>Проблема не решена</option>
+                            </select>
+                             <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Применить</button>
+                        </form>
+                    {% endif %}
                     </div>
                 </div>
             </div>
