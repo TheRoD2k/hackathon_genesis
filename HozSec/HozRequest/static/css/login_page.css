@@ -30,7 +30,7 @@ body {
 
 #contact input[type="text"],
 #contact input[type="email"],
-#contact input[type="tel"],
+#contact input[type="password"],
 #contact input[type="url"],
 #contact textarea,
 #contact button[type="submit"] {
@@ -68,7 +68,7 @@ fieldset {
 
 #contact input[type="text"],
 #contact input[type="email"],
-#contact input[type="tel"],
+#contact input[type="password"],
 #contact input[type="url"],
 #contact textarea {
   width: 100%;
@@ -99,7 +99,7 @@ fieldset {
   cursor: pointer;
   width: 100%;
   border: none;
-  background: #123F83;
+  background: #1652B4;
   color: #FFF;
   margin: 0 0 5px;
   padding: 10px;

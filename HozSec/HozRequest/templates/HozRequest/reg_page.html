@@ -12,18 +12,25 @@
 
     <div class="container">
         <form id="contact" action="" method="post">
+            {% csrf_token %}
             <h3>Регистрация</h3>
             <fieldset>
-                <input placeholder="Логин" type="text" tabindex="1" required autofocus>
+                <input placeholder="Фамилия и инициалы" name="login" type="text" tabindex="1" required autofocus>
             </fieldset>
             <fieldset>
-                <input placeholder="Эл. почта" type="text" tabindex="1">
+                <input placeholder="Эл. почта" name="mail" type="text" tabindex="1" required data>
+            </fieldset>
+            {% if Empty_password and not initial%}
+                <h1 > Пароль не должен быть пустым!</h1>
+            {% endif %}
+            {% if not Match_password and not Empty_password %}
+                <h1 > Пароли должны совпадать!</h1>
+            {% endif %}
+            <fieldset>
+                <input placeholder="Пароль" name="pass_1" type="password" tabindex="1" required>
             </fieldset>
             <fieldset>
-                <input placeholder="Пароль" type="password" tabindex="1">
-            </fieldset>
-            <fieldset>
-                <input placeholder="Повторите пароль" type="password" tabindex="1">
+                <input placeholder="Повторите пароль" name="pass_2" type="password" tabindex="1" required>
             </fieldset>
 
             <fieldset>

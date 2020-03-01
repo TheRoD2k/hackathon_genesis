@@ -106,7 +106,25 @@ fieldset {
   font-size: 15px;
 }
 
+#contact input[type="submit"] {
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  background: #123F83;
+  color: #FFF;
+  margin: 0 0 5px;
+  padding: 10px;
+  font-size: 15px;
+}
+
 #contact button[type="submit"]:hover {
+  background: #123F83;
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#contact input[type="submit"]:hover {
   background: #123F83;
   -webkit-transition: background 0.3s ease-in-out;
   -moz-transition: background 0.3s ease-in-out;
@@ -117,9 +135,10 @@ fieldset {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.copyright {
-  text-align: center;
+#contact input[type="submit"]:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 }
+
 
 #contact input:focus,
 #contact textarea:focus {
