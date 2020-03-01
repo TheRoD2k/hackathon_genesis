@@ -31,6 +31,10 @@
     float: left;
 }
 
+.off {
+    color: #1652B4;
+}
+
 .split {
     height: 100%;
     position: fixed;

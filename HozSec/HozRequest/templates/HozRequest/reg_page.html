@@ -10,6 +10,15 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/reg_page.css' %}">
 
+
+    <div id="header">
+        <h1>HozSec</h1>
+        <div id="links">
+            <a href="#">Оставить заявку</a>
+            <a href="#">Личный кабинет</a>
+            <a href="#">Выйти</a>
+        </div>
+    </div>
     <div class="container">
         <form id="contact" action="" method="post">
             {% csrf_token %}
