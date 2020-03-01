@@ -1,0 +1,159 @@
+body {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	font: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #000000;
+	background: #EEEEEE;
+}
+*
+{
+  margin: 0 auto 0 auto;
+ text-align:left;}
+
+#container
+{
+  display: block;
+  height:auto;
+  position: relative;
+  width: 80%;
+  padding-left:17px;
+  padding-right:17px;
+  overflow:hidden;
+}
+
+#links
+{
+display:block;
+float:right;
+margin-top:25px;
+margin-right:10px;
+}
+
+#links a, #links a:visited
+{
+font-size:16px;
+font-weight:bold;
+margin-left:4px;
+margin-right:4px;
+color: #1652B4;
+text-decoration:none;
+}
+
+#links a:hover
+{
+border-bottom:dotted 1px #1652B4;
+}
+
+#header
+{
+height:60px;
+
+}
+
+#header h1
+{
+margin-top:15px;
+margin-left:10px;
+font-size:33px;
+color:#0A2645;
+float:left;
+}
+
+.off
+{
+color:#1652B4;
+}
+
+.info {
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+.username {
+    font-size: 24px;
+    color: #123F83;
+    float: left;
+    padding: 10px;
+    width: 80%;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.status_bar {
+    font-size: 14px;
+    font-weight: bold;
+    color: #123F83;
+    float: right;
+    width: 20%;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.status {
+    float: left;
+    position: relative;
+    bottom: -8px;
+    width: 20%;
+    padding: 5px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.value {
+    float: left;
+    position: relative;
+    bottom: -8px;
+    width: 80%;
+    padding: 5px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.record {
+    float: left;
+    border: 2px solid darkblue;
+    height: 300px;
+    width: 100%;
+}
+
+.column1 {
+    float: left;
+    width: 25%;
+    height: 300px;
+    box-sizing: border-box;
+    border-right: 1px solid black;
+    display: inline-block;
+}
+
+.column2 {
+    float: left;
+    width: 75%;
+    height: 300px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.problem_text {
+    padding: 10px;
+}
+
+.contenttext h2
+{
+color:#123F83;
+font-size:24px;
+margin-bottom:10px;
+
+}
+
+.contenttext
+{
+	padding-left:10px;
+	padding-right:10px;
+}
+
+
+
+p {text-align: left;}

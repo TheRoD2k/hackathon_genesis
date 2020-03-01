@@ -7,6 +7,8 @@ HozSec/.idea
 # pycaches
 HozSec/HozRequest/__pycache__
 HozSec/HozSec/__pycache__
+HozSec/HozSec/__pycache__/
+HozSec/HozRequest/migrations/__pycache__/
 HozSec/db.sqlite3
 # venv
 /venv

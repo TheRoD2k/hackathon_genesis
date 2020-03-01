@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 {% load static %}
 
 <html lang="en">
@@ -12,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/example.css' %}">
     {%if not empty%}
     <div class="container">
-        <form id="contact" action="" method="post">
+        <form id="contact" action="{% url place_problem %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <h3>Отправить заявку на решение проблемы</h3>
             <fieldset>
@@ -24,9 +23,13 @@
             <fieldset>
                 <p><input type="checkbox" name="anon"> Отправить жалобу анонимно</p>
             </fieldset>
+            <p>
+            <input id="id_image" type="file" class="" name="image">
+            </p>
             <fieldset>
-                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Отправить</button>
             </fieldset>
+
 
         </form>
     </div>

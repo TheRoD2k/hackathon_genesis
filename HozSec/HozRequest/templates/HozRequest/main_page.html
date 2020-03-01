@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="ru">
+<link rel="stylesheet" href="{% static 'css/main_page.css' %}">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HozSec</title>
+</head>
+
+<body>
+<div id="container">
+    <div id="header">
+        <h1>HozSec</h1>
+        <div id="links">
+            <a href="#">Оставить заявку</a>
+            <a href="#">Личный кабинет</a>
+            <a href="#">Выйти</a>
+        </div>
+    </div>
+{% for i in requests %}
+
+    <div class="content">
+        <div class="record">
+            <div class="info">
+                <div class="username">
+                    {{i.user.name}}
+                </div>
+                <div class="status_bar">
+                    <div class="status">
+                        Status:
+                    </div>
+                    <div class="value">
+                    {% if not isadmin %}
+                        {% if i.resolved %}
+                        Решено
+                        {% else %}
+                        Не решено
+                        {% endif %}
+                    {% else %}
+                        <form id="change_status" method="post" action="">
+                            {% csrf_token %}
+                            <select name="moderate" id="moderate" >
+                                <option value="solved+{{ i.id }}" {% if i.resolved %} selected {% endif %}>Проблема решена</option>
+                                <option value="unsolved+{{ i.id }}"{% if not i.resolved %} selected {% endif %}>Проблема не решена</option>
+                            </select>
+                             <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Применить</button>
+                        </form>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column1">
+                    <div class="problem_pic">
+                        <img class="picture" src="#">
+                    </div>
+                </div>
+                <div class="column2">
+                    <div class="problem_text">
+                        <h3>{{ i.theme }}</h3>
+                        <h2>{{ i.problem_text }}</h2>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+        {% endfor %}
+
+
+</div>
+</body>
+</html>

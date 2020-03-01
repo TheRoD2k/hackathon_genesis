@@ -4,6 +4,7 @@ from django.db import models
 
 
 def login(email, password):
+<<<<<<< HEAD
     """
     login function
     :param email: user email
@@ -11,8 +12,11 @@ def login(email, password):
     :return: state
     """
     if User.objects.filter(email__exact=email, password__exact=password) is not None:
+=======
+    if User.objects.filter(email__exact=email, password__exact=password).exists():
+>>>>>>> experimental_2
         return 'Successful log in'
-    elif User.objects.filter(email__exact=email) is not None:
+    elif User.objects.filter(email__exact=email).exists():
         return 'Wrong password'
     else:
         return 'Wrong user'
@@ -50,7 +54,11 @@ def get_public_problems():
     """
     return Request.objects.filter(private__exact=False).values()
 
+def get_problem_by_id(id):
+    return Request.objects.filter(pk__exact = id).values()
 
+def get_user_by_id(id):
+    return User.objects.filter(pk__exact = id).values()[0]
 def add_problem(email, theme, problem, private_flag):
     """
     add problem as default
@@ -80,3 +88,11 @@ def get_messages(id_request):
     return Request.objects.filter(
         user__message__request_id__exact=id_request
     ).values('message_text')
+
+def get_comments(problem_id):
+    tempous = get_problem_by_id(problem_id)
+    if not tempous.exists():
+        return tempous
+    else:
+        tempous = tempous[0]
+        return Message.objects.filter(request__exact=tempous['id']).values()
