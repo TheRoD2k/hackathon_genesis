@@ -46,7 +46,7 @@ def get_public_problems():
 
 
 def get_problem_by_id(problem_id):
-    return Request.objects.filter(pk__exact=problem_id).values()
+    return Request.objects.filter(pk__exact=problem_id)
 
 
 def get_user_by_id(user_id):
@@ -82,10 +82,10 @@ def get_problems_by_id(request_id):
     ).values('problem_text')
 
 
-def get_messages(request_id):
-    return Request.objects.filter(
-        pk__exact=request_id
-    ).values('message_text')
+# def get_messages(request_id):
+#     return Request.objects.filter(
+#         pk__exact=request_id
+#     ).values('message_text')
 
 
 def get_comments(problem_id):

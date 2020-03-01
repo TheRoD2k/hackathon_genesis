@@ -14,7 +14,6 @@ logged = dict()
 users = dict()
 
 
-
 @bot.message_handler(commands=['start'])
 def start_message(message):
     print("Got /start")
@@ -52,15 +51,29 @@ def handle_conversation(message):
         waiting_for_login[message.from_user.id] = True
         print("Login request")
     if message.text == 'Регистрация':
-        print("300 bucks")
+        print("1300 bucks")
         bot.send_message(message.chat.id, 'http://127.0.0.1:8000/signup')
+
+
+@bot.message_handler(func=lambda message: logged.get(message.from_user.id, False), content_types=['text'])
+def conversation(message):
+    if message.text.lower() == 'публичные проблемы':
+        for problem in dbf.get_public_problems():
+            bot.send_message(message.chat.id, problem)
+    elif message.text.lower() == 'мои проблемы':
+        for problem in dbf.get_problems_by_user(users[message.from_user.id]['login']):
+            bot.send_message(message.chat.id, problem)
+    elif message.text.lower().startswith('текст проблемы') and len(message.text.split()) == 3 and isinstance(message.text.split()[-1], int):
+        bot.send_message(message.chat.id, dbf.get_problems_by_id(message.text.split()[-1]))
+    elif message.text.lower().startswith('получить сообщения') and len(message.text.split()) == 3 and isinstance(message.text.split()[-1], int):
+        for comment in dbf.get_comments(message.text.split()[-1]):
+            bot.send_message(message.chat.id, comment)
 
 
 # @bot.message_handler(commands=['start'])
 # def start_message(message):
 #     print("Got /start")
 #     bot.send_message(message.chat.id, 'Начало работы с ботом', reply_markup=initial_keyboard)
-
 
 
 def run_bot():
