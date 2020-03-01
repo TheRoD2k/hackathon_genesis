@@ -17,16 +17,20 @@
         <div id="links">
             <a href="#">Оставить заявку</a>
             <a href="#">Личный кабинет</a>
-            <a href="#">Выйти</a>
+            {% if Logged %}
+            <a href="http://127.0.0.1:8000/logout">Выйти</a>
+            {% else %}
+            <a href="http://127.0.0.1:8000/signup">Войти/Зарегистрироваться</a>
+            {%endif  %}
         </div>
     </div>
-{% for i in requests %}
+{% for i,j in zip %}
 
     <div class="content">
         <div class="record">
             <div class="info">
                 <div class="username">
-                    {{i.user.name}}
+                    {{j}}
                 </div>
                 <div class="status_bar">
                     <div class="status">
@@ -60,8 +64,8 @@
                 </div>
                 <div class="column2">
                     <div class="problem_text">
-                        <h3>{{ i.theme }}</h3>
-                        <h2>{{ i.problem_text }}</h2>
+                        <h2 ><a href='http://127.0.0.1:8000/problem/{{ i.id }}'>{{ i.theme }}</a></h2>
+                        <h3>{{ i.problem_text }}</h3>
                     </div>
 
                 </div>
