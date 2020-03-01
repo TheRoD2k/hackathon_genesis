@@ -22,7 +22,7 @@ class Request(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, default="user")
     private = models.BooleanField(default=True)
     resolved = models.BooleanField(default=False)
-    photo = models.ImageField()
+    photo_url = models.CharField(max_length=200)
 
 
 class Message(models.Model):
@@ -33,9 +33,3 @@ class Message(models.Model):
 
 
 # Create your models here.
-"""
-                            <select name="moderate" id="moderate">
-                                <option value="solved">Проблема решена</option>
-                                <option value="unsolved">Проблема не решена</option>
-                            </select>
-"""

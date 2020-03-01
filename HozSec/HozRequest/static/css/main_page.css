@@ -127,7 +127,10 @@ color:#1652B4;
     border-right: 1px solid black;
     display: inline-block;
 }
-
+.problem_pic{
+    width : 250px;
+    height : 250px;
+}
 .column2 {
     float: left;
     width: 75%;

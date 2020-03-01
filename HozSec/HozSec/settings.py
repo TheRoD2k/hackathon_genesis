@@ -59,6 +59,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         #'CRISPY_TEMPLATE_PACK' : 'bootstrap4',
         #'MEDIA_ROOT': '/home/m1ndst0ne/PycharmProjects/HackaHey/hackathon_genesis/HozSec/HozRequest/static/media',
+
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -83,7 +84,8 @@ DATABASES = {
     }
 }
 
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'HozRequest/static/media')
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 

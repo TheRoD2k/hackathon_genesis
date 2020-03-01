@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 import datetime
 from .models import *
 from . import db_functions
+from django.core.files.storage import FileSystemStorage
 #размещение реквеста
 
 def place_problem(request):
@@ -19,12 +20,25 @@ def place_problem(request):
         #здесь создание заявы и редирект, если пост не пустой
         if(request.POST["theme"]==""):
             return render(request, 'HozRequest/place_problem.html', context)
+        anonim = False
+        try:
+            anonim = (request.POST["anon"] == "on")
+        except:
+            pass
         temp = Request(date = datetime.datetime.now(),
                        theme = request.POST["theme"],
                        problem_text=request.POST["problem_text"],
-                       user = user[0],
-                       private= (request.POST["anon"] == "on"),
+                       user = user.get(),
+                       private= anonim,
                        resolved=False)
+        if not (request.FILES.get('myfile',None) is None):
+            myfile = request.FILES['myfile']
+            fs = FileSystemStorage()
+            fs.path("")
+            filename = fs.save(myfile.name, myfile)
+            uploaded_file_url = fs.url(filename)
+            print(uploaded_file_url)
+            temp.photo_url = uploaded_file_url
         temp.save()
         return redirect("/userpage")
     return render(request, 'HozRequest/place_problem.html', context)
@@ -64,6 +78,9 @@ def signin(request):
         else:
             context['wmail'] = True
     return render(request, "HozRequest/login_page.html", context)
+
+
+
 def public_problems(request):
     context = {}
     if request.method == "POST":
