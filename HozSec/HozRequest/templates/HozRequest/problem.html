@@ -11,11 +11,20 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<body>
+<div id="header" style=" right: auto; top: 0; background-color: #5b9bd1" >
+    <h1>HozSec</h1>
+    <div id="links">
+        <a href="#">Оставить заявку</a>
+        <a href="#">Личный кабинет</a>
+        <a href="#">Выйти</a>
+    </div>
+</div>
 
+
+<body>
 <div class="split left">
     <div class="w3-card">
-        <img src="img_avatar3.png" class="img-settings">
+        <img src="{% static data.photo_url %}" class="img-settings">
         <div class="w3-container">
             <h2><b>
                 Описание:

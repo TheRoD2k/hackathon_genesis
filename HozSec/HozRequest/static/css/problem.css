@@ -31,6 +31,10 @@
     float: left;
 }
 
+.off {
+    color: #1652B4;
+}
+
 .split {
     height: 100%;
     position: fixed;
@@ -43,35 +47,13 @@
 .left {
     left: 0;
     width: 40%;
-    background-image: url('https://pcvector.net/uploads/posts/2018-08/1533326959_low-poly-background-generator-min.png');
-
+    background: CadetBlue;
 }
 
 .right {
     right: 0;
     width: 60%;
     background-color: rgba(255, 255, 128, .5);
-}
-
-.w3-card {
-    position: relative;
-    width:70%;
-    height:80%;
-    background-color: white;
-    left: 100px;
-    top: 50px;
-
-}
-
-.img-settings {
-    position: relative;
-    width: 100%;
-    height: 70%;
-}
-
-.events-content-section p {
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 .imgdescription {
