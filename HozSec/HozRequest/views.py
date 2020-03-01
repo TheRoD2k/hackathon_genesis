@@ -28,13 +28,6 @@ def place_problem(request):
                        private=(request.POST["anon"] == "on"),
                        resolved=False)
         temp.save()
-<<<<<<< HEAD
-        return redirect("/")   # заглушка
-        return redirect("problem_gained/")
-    return render(request, 'HozRequest/place_problem.html', context)
-
-
-=======
         return redirect("/userpage")
     return render(request, 'HozRequest/place_problem.html', context)
 
@@ -59,7 +52,6 @@ def signup(request):
             temp.save()
             return redirect("/public_problems/")
     return render(request,"HozRequest/reg_page.html",context)
->>>>>>> experimental_2
 def signin(request):
     context = {}
     context['wmail'] = False

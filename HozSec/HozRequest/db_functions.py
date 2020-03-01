@@ -4,17 +4,7 @@ from django.db import models
 
 
 def login(email, password):
-<<<<<<< HEAD
-    """
-    login function
-    :param email: user email
-    :param password: user password
-    :return: state
-    """
-    if User.objects.filter(email__exact=email, password__exact=password) is not None:
-=======
     if User.objects.filter(email__exact=email, password__exact=password).exists():
->>>>>>> experimental_2
         return 'Successful log in'
     elif User.objects.filter(email__exact=email).exists():
         return 'Wrong password'
