@@ -26,7 +26,7 @@ def get_problems_by_user(email):
     :param email: user email
     :return: dict of problems
     """
-    return Request.objects.filter(user__exact=email).values()
+    return Request.objects.filter(user__exact=get_user(email).values('id')[0]['id']).values()
 
 
 def get_problems_to_make():
@@ -90,8 +90,9 @@ def get_problems_by_id(request_id):
 
 def get_comments(problem_id):
     tmp = get_problem_by_id(problem_id)
+    # print(tmp)
     if not tmp.exists():
-        return tmp
+        return
     else:
-        tmp = tmp[0]
-        return Message.objects.filter(request__exact=tmp['id']).values()
+        tmp = tmp.values()[0]
+        return Message.objects.filter(request_id__exact=tmp['id']).values()

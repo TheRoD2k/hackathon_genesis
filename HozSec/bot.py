@@ -27,6 +27,7 @@ def get_login(message):
     users[message.from_user.id]["login"] = message.text
     waiting_for_login[message.from_user.id] = False
     waiting_for_password[message.from_user.id] = True
+    bot.send_message(message.chat.id, 'Введите пароль')
 
 
 @bot.message_handler(func=lambda message: waiting_for_password.get(message.from_user.id, False) == True, content_types=['text'])
@@ -48,6 +49,7 @@ def get_password(message):
 def handle_conversation(message):
     print("Got message")
     if message.text == 'Войти':
+        bot.send_message(message.chat.id, 'Введите email')
         waiting_for_login[message.from_user.id] = True
         print("Login request")
     if message.text == 'Регистрация':
@@ -57,17 +59,35 @@ def handle_conversation(message):
 
 @bot.message_handler(func=lambda message: logged.get(message.from_user.id, False), content_types=['text'])
 def conversation(message):
+    print(message.text.split())
     if message.text.lower() == 'публичные проблемы':
         for problem in dbf.get_public_problems():
-            bot.send_message(message.chat.id, problem)
+            print(problem)
+            bot.send_message(message.chat.id, f'id -- {problem["id"]}, theme -- {problem["theme"]}')
+        print('public problems requested')
     elif message.text.lower() == 'мои проблемы':
         for problem in dbf.get_problems_by_user(users[message.from_user.id]['login']):
-            bot.send_message(message.chat.id, problem)
-    elif message.text.lower().startswith('текст проблемы') and len(message.text.split()) == 3 and isinstance(message.text.split()[-1], int):
-        bot.send_message(message.chat.id, dbf.get_problems_by_id(message.text.split()[-1]))
-    elif message.text.lower().startswith('получить сообщения') and len(message.text.split()) == 3 and isinstance(message.text.split()[-1], int):
-        for comment in dbf.get_comments(message.text.split()[-1]):
-            bot.send_message(message.chat.id, comment)
+            print(problem)
+            bot.send_message(message.chat.id, f'id -- {problem["id"]}, theme -- {problem["theme"]}')
+        print('user problems requested')
+    elif message.text.lower().startswith('текст проблемы') and len(message.text.split()) == 3:
+        try:
+            print(dbf.get_problems_by_id(int(message.text.split()[-1]))[0]['problem_text'])
+            print('problem requested')
+            bot.send_message(message.chat.id, dbf.get_problems_by_id(int(message.text.split()[-1]))[0]['problem_text'])
+        except ValueError:
+            pass
+    elif message.text.lower().startswith('получить сообщения') and len(message.text.split()) == 3:
+        try:
+            print('comments requested')
+            print(dbf.get_comments(int(message.text.split()[-1])))
+            for i, comment in enumerate(dbf.get_comments(int(message.text.split()[-1]))):
+                if i % 2:
+                    bot.send_message(message.chat.id, f'{users[message.from_user.id]["login"]}:\n--{comment["message_text"]}')
+                else:
+                    bot.send_message(message.chat.id, f'--{comment["message_text"]}')
+        except ValueError:
+            pass
 
 
 # @bot.message_handler(commands=['start'])
