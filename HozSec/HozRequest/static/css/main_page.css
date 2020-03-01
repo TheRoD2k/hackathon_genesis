@@ -133,11 +133,11 @@ body {
 .column1 img {
     float: none;
     margin: 0 auto;
-    width: 50%;
+    width: 70%;
     height: 50%;
-    -webkit-border-radius: 50% !important;
-    -moz-border-radius: 50% !important;
-    border-radius: 50% !important;
+    webkit-border-radius: 0% !important;
+    -moz-border-radius: 0% !important;
+    border-radius: 0% !important;
 }
 
 .column2 {

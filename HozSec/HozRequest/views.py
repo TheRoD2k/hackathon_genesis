@@ -64,6 +64,7 @@ def signup(request):
             temp.save()
             return redirect("/public_problems/")
     return render(request,"HozRequest/reg_page.html",context)
+
 def signin(request):
     context = {}
     context['wmail'] = False
@@ -83,12 +84,17 @@ def signin(request):
 
 def public_problems(request):
     context = {}
+    context['Logged'] = db_functions.get_user(request.session.get('login',"123")).exists()
     if request.method == "POST":
         req_id = int(request.POST['moderate'].split('+')[1])
         solved = request.POST['moderate'].split('+')[0]=='solved'
         Request.objects.filter(pk=req_id).update(resolved=solved)
 
     context['requests'] = db_functions.get_public_problems()
+    tmp = []
+    for i in context['requests']:
+        tmp.append(db_functions.get_user_by_id(int(i['user_id']))['name'])
+    context['zip'] = zip(context['requests'],tmp)
     context['isadmin'] = False
     if db_functions.get_user(request.session.get('login',"123")).exists():
         context['isadmin'] = (db_functions.get_user(request.session.get('login', "123"))[0].ruleset != 'user')
@@ -133,6 +139,8 @@ def userpage(request):
         tempouser = db_functions.get_user(request.session.get('login',"123"))[0]
         context['problems'] = db_functions.get_problems_by_user(tempouser.id)
         context['user'] = tempouser
-
-
     return render(request,"HozRequest/userpage.html",context)
+
+def logout(request):
+    request.session['login']=""
+    return redirect("/public_problems")
