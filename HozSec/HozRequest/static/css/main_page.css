@@ -66,69 +66,78 @@ float:left;
 color:#1652B4;
 }
 
-.picture
-{
-	padding-bottom:8px;
-    width: 100px;
-	margin-top:22px;
+.info {
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid black;
 }
 
 .username {
-    font-size: 22px;
+    font-size: 24px;
     color: #123F83;
-    padding: 20px;
-}
-
-.row h3 {
-    padding: 20px;
-}
-
-.row {
-    border-color: #123F83;
-    border-style: solid;
-}
-
-.row_contents {
-    display: flex;
-    justify-content: flex-start;
+    float: left;
+    padding: 10px;
     width: 80%;
-    float: left;
+    box-sizing: border-box;
+    display: inline-block;
 }
 
-.problem_pic {
-    float: left;
-    width: 500px;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.problem_contents {
-    font-size: 18px;
-    float: left;
-    width: 600px;
-    margin-right: 20px;
-}
-
-.problem_text {
-    float: left;
+.status_bar {
+    font-size: 14px;
+    font-weight: bold;
     color: #123F83;
-    font-size: 18px;
-}
-
-.statusbar {
-    font-size: 18px;
-    color: #123F83;
-    display: flex;
-    justify-content: flex-start;
+    float: right;
+    width: 20%;
+    box-sizing: border-box;
+    display: inline-block;
 }
 
 .status {
-    margin-right: 20px;
+    float: left;
+    position: relative;
+    bottom: -8px;
+    width: 20%;
+    padding: 5px;
+    box-sizing: border-box;
+    display: inline-block;
 }
 
-.statusvalue {
-    margin-left: 20px;
-    margin-right: 20px;
+.value {
+    float: left;
+    position: relative;
+    bottom: -8px;
+    width: 80%;
+    padding: 5px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.record {
+    float: left;
+    border: 2px solid darkblue;
+    height: 300px;
+    width: 100%;
+}
+
+.column1 {
+    float: left;
+    width: 25%;
+    height: 300px;
+    box-sizing: border-box;
+    border-right: 1px solid black;
+    display: inline-block;
+}
+
+.column2 {
+    float: left;
+    width: 75%;
+    height: 300px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+.problem_text {
+    padding: 10px;
 }
 
 .contenttext h2
@@ -146,8 +155,5 @@ margin-bottom:10px;
 }
 
 
-html, body {
-text-align: center;
-}
 
 p {text-align: left;}
