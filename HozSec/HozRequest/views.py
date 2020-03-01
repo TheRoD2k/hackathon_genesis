@@ -7,9 +7,11 @@ from django.core.files.storage import FileSystemStorage
 #размещение реквеста
 
 def place_problem(request):
-    #если не зареган - пиздуй на регистрацию
-    #если вернулся после отправки формы - лети на problem_gained
-    context = {}
+    """
+    если не зареган - пиздуй на регистрацию
+    если вернулся после отправки формы - лети на problem_gained
+    """
+    context = dict()
     context["empty"] = False
     mail = request.session.get('login',"")
     user = db_functions.get_user(mail)
@@ -18,7 +20,7 @@ def place_problem(request):
         context["empty"] = True
     if request.method == 'POST':
         #здесь создание заявы и редирект, если пост не пустой
-        if(request.POST["theme"]==""):
+        if request.POST["theme"]=="":
             return render(request, 'HozRequest/place_problem.html', context)
         anonim = False
         try:
