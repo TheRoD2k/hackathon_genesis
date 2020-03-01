@@ -10,9 +10,9 @@ initial_keyboard.row('Войти', 'Регистрация')
 
 waiting_for_login = dict()
 waiting_for_password = dict()
-logged = {}
+logged = dict()
+users = dict()
 
-users = {}
 
 
 @bot.message_handler(commands=['start'])
@@ -21,15 +21,18 @@ def start_message(message):
     bot.send_message(message.chat.id, 'Начало работы с ботом', reply_markup=initial_keyboard)
 
 
-@bot.message_handler(lambda message: waiting_for_login[message.from_user.id] == True)
+@bot.message_handler(func=lambda message: waiting_for_login.get(message.from_user.id, False) == True, content_types=['text'])
 def get_login(message):
+    print("GET LOGIN")
+    users[message.from_user.id] = dict()
     users[message.from_user.id]["login"] = message.text
     waiting_for_login[message.from_user.id] = False
     waiting_for_password[message.from_user.id] = True
 
 
-@bot.message_handler(lambda message: waiting_for_password[message.from_user.id] == True)
+@bot.message_handler(func=lambda message: waiting_for_password.get(message.from_user.id, False) == True, content_types=['text'])
 def get_password(message):
+    print("GET PASSWORD")
     users[message.from_user.id]["password"] = message.text
     waiting_for_password[message.from_user.id] = False
     login = users[message.from_user.id]["login"]
@@ -42,7 +45,7 @@ def get_password(message):
         logged[message.from_user.id] = True
 
 
-@bot.message_handler(lambda message: logged[message.from_user.id] == False, content_types=['text'])
+@bot.message_handler(func=lambda message: logged.get(message.from_user.id, False) == False, content_types=['text'])
 def handle_conversation(message):
     print("Got message")
     if message.text == 'Войти':
@@ -51,6 +54,13 @@ def handle_conversation(message):
     if message.text == 'Регистрация':
         print("300 bucks")
         bot.send_message(message.chat.id, 'http://127.0.0.1:8000/signup')
+
+
+# @bot.message_handler(commands=['start'])
+# def start_message(message):
+#     print("Got /start")
+#     bot.send_message(message.chat.id, 'Начало работы с ботом', reply_markup=initial_keyboard)
+
 
 
 def run_bot():
